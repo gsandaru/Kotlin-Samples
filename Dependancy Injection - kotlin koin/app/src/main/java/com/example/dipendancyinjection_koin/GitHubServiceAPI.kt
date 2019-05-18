@@ -5,15 +5,16 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 
-class TestClass {
-    fun greeting():String = "Hello"
+class GitHubServiceAPI {
 
     fun getGitHubService() : GitHubService {
+
         val retrofit = Retrofit.Builder()
             .baseUrl("https://api.github.com/")
             .addConverterFactory(MoshiConverterFactory.create())
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .build()
+
         return retrofit.create(GitHubService::class.java)
     }
 }
